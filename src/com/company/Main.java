@@ -4,15 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // в примере почему 77?
-        // public static void main(String[] args) {
-        // double fahrenheitTemperature = 77;
-        // double celsiusTemperature = 5/9 * (fahrenheitTemperature-32);
-        // System.out.println("For fahrenheit temperature " + fahrenheitTemperature + " celsius
-
         double fahrenheitTemperature = 77;
-        double celsiusTemperature = 5/9 * (fahrenheitTemperature - 32);
-        double fahrenheitToCelsiumTemperature = 9/5 * (celsiusTemperature + 32);
+        double celsiusTemperature = 5 / 9 * (fahrenheitTemperature - 32);
+        double fahrenheitToCelsiumTemperature = 9 / 5 * (celsiusTemperature + 32);
         double kelvinTemperature = celsiusTemperature + 273.16;
         double inchesInMeter = 39.37;
         double kmsInMile = 1.609;
@@ -21,9 +15,10 @@ public class Main {
         float total_test = 10;
         float marked_test = 7;
         float percentage = ((marked_test / total_test) * 100);
-        boolean ageFamily = isAge (29, 40);
+        boolean ageFamily = isAge(29, 40);
         boolean familyIncome = isFamilyIncome(40000);
-        boolean appleQuality = isAppleQuality(0, 15);
+        boolean isFirstSortAvailable = true;
+        boolean isSecondSortAvailable = true;
 
         System.out.println("1. Convert Fahrenheit to Celsius. For fahrenheit temperature " + fahrenheitTemperature +
                 " celsius temperature is: " + celsiusTemperature);
@@ -42,27 +37,14 @@ public class Main {
         System.out.println("8. Total test = " + total_test + "; marked test = " + marked_test + " Results: " + percentage + " %");
         System.out.println("9. " + ageFamily);
         System.out.println("10. " + familyIncome);
-        System.out.println("11. " + appleQuality);
+        System.out.println("11. Availability of first-class apples: " + isFirstSortAvailable + ". Availability of second-class apples: " + isSecondSortAvailable + ".");
     }
 
-    public static boolean isAge(int a, int b){
-        if ((a < 35) && (b < 35)){
-            return true;
-        }
-        return false;
+    public static boolean isAge(int a, int b) {
+        return ((a < 35) && (b < 35));
     }
 
-    public static boolean isFamilyIncome(int a){
-        if ((a < 50000) && (a > 20000)){
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isAppleQuality(int a, int b){
-        if ((a > 0) | (b > 0)){
-            return true;
-        }
-        return false;
+    public static boolean isFamilyIncome(int a) {
+        return ((a < 50000) && (a > 20000));
     }
 }
