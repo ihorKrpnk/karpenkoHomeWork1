@@ -9,9 +9,16 @@ public class SquareCircle {
         double outDiamSquare = Math.sqrt(sSquare) * Math.sqrt(2);
         double innerDiamSquare = Math.sqrt(sSquare);
 
-        if (innerDiamSquare <= diamCircle) System.out.println("Square fits in the circle");
-        else System.out.println("Square doesn't fit in the circle");
-        if (outDiamSquare >= diamCircle) System.out.println("Circle fits in the square");
-        else System.out.println("Circle doesn't fit in the square");
+        if (innerDiamSquare <= diamCircle) {
+            System.out.println("Square fits in the circle");
+        } else {
+            System.out.println("Square doesn't fit in the circle");
+        }
+
+        if (outDiamSquare >= diamCircle) {
+            System.out.println("Circle fits in the square");
+        } else {
+            System.out.println("Circle doesn't fit in the square");
+        }
     }
 }
