@@ -13,7 +13,9 @@ public class isPalindrome {
 
     public static boolean isPalindr() {
         char[] arrayOfChars = "0totot1".toCharArray();
-        int left = 0, right = arrayOfChars.length - 1;
+        int left = 0;
+        int right = arrayOfChars.length - 1;
+
         while (left < right) {
             if (arrayOfChars[left++] != arrayOfChars[right--])
                 return false;
