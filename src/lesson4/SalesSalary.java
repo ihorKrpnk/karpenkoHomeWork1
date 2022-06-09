@@ -2,41 +2,34 @@ package lesson4;
 
 public class SalesSalary {
 
-
     public static void main(String[] args) {
 
-        double rate = 4.8;
+        double rate = 5;
         int hours = 170;
         int experience = 7;
-        int sale = 25;
+        int sale = 21;
         int amountSale = 20000;
-        double salary = calculateSalary(hours, rate);
-        double experienceRate = experienceRate(experience);
-        double salaryExp = salary * experienceRate;
-        double bonusSales = bonusSales(sale);
-        double bonusAmountSales = bonusAmountSales(amountSale);
-        double totalSalary = salaryExp + bonusSales + bonusAmountSales;
+        double totalSalary = totalSalaryMethod(rate, hours, experience, sale, amountSale);
 
-        System.out.println("Расчет:\nОтработано " + hours + " часов");
-        System.out.println("Стаж = " + experience + " лет");
-        System.out.println("Коэффициент на базовые часы в зависимости от стажа работы: " + experienceRate);
-        System.out.println("Количество продаж: " + sale + " продаж");
-        System.out.println("Бонус (- штраф) в зависимости от количества продаж: " + bonusSales + " грн.");
-        System.out.println("Сумма продаж: " + amountSale + " грн.");
-        System.out.println("Бонус в зависимости от суммы продаж: " + bonusAmountSales + " грн.");
-        System.out.println("Итого зарплата составляет: " + totalSalary + " грн.");
+        System.out.println("Итого зарплата составляет: " + totalSalary + " $");
+    }
+
+    public static double totalSalaryMethod(double rate, int hours, int experience, int sale, int amountSale) {
+        double calculateSalary = calculateSalary(hours, rate);
+        double experienceRate = experienceRate(experience);
+        double bonusSales = bonusSales(sale) + bonusAmountSales(amountSale);
+        return (calculateSalary * experienceRate) + bonusSales;
     }
 
     public static double calculateSalary(int hours, double rate) {
-        double baseSalary = (hours * rate);
 
-        if (hours <= 159) {
-            return baseSalary;
+        if (hours > 160) {
+            double baseSalary = 160 * rate;
+            int overtimeHours = hours - 160;
+            double overtimeSalary = overtimeHours * 1.5 * rate;
+            return baseSalary + overtimeSalary;
         }
-
-        int overtimeHours = hours - 160;
-        double overtimeSalary = overtimeHours * 1.5;
-        return baseSalary + overtimeSalary;
+        return hours * rate;
     }
 
     private static double experienceRate(int experience) {
@@ -67,9 +60,8 @@ public class SalesSalary {
     public static double bonusAmountSales(double amountSale) {
 
         if (amountSale > 15000) {
-            return 100;
+            return 150;
         }
         return 0;
     }
 }
-
