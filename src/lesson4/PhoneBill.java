@@ -10,20 +10,18 @@ public class PhoneBill {
         double sms = 60;
         double minutesZoneOne = 4;
         double minutesZoneTwo = 5;
-        double trafficSpent = trafficSpent(gigabyte);
+        double totalPhoneBill = totalPhoneBillMethod(gigabyte, minutesUkr, sms, minutesZoneOne, minutesZoneTwo);
+
+        System.out.println(totalPhoneBill + " грн. всього з ПДВ (7 %)");
+    }
+
+    public static double totalPhoneBillMethod(double gigaBytes, double minutesUkr, double sms, double minutesZoneOne, double minutesZoneTwo) {
+        double trafficSpent = trafficSpent(gigaBytes);
         double callSpentUkr = callSpentUkr(minutesUkr);
         double smsSpent = smsSpent(sms);
-        double zoneOneSpent = callZoneOneSpent(minutesZoneOne);
-        double zoneTwoSpent = callZoneTwoSpent(minutesZoneTwo);
-        double price = trafficSpent + callSpentUkr + smsSpent + zoneOneSpent + zoneTwoSpent;
-
-        System.out.println(trafficSpent + " грн. - інтернет");
-        System.out.println(callSpentUkr + " грн. - дзвінки по Україні");
-        System.out.println(smsSpent + " грн. - sms по Україні");
-        System.out.println(zoneOneSpent + " грн. - дзвінки за кордон (Зона №1)");
-        System.out.println(zoneTwoSpent + " грн. - дзвінки за кордон (Зона №2)");
-        System.out.println("----------------------------------------");
-        System.out.println(addTax(price) + " грн. всього з ПДВ (7 %)");
+        double callZoneOneSpent = callZoneOneSpent(minutesZoneOne);
+        double callZoneTwoSpent = callZoneTwoSpent(minutesZoneTwo);
+        return (trafficSpent + callSpentUkr + smsSpent + callZoneOneSpent + callZoneTwoSpent) * TAX;
     }
 
     public static double trafficSpent(double gigaBytes) {
@@ -46,15 +44,15 @@ public class PhoneBill {
         return basePlan + overPrice;
     }
 
-    public static double callSpentUkr(double minutes) {
+    public static double callSpentUkr(double minutesUkr) {
         double priceMinutes = 0.5;
         double priceMinutesOver = 0.75;
         double minutesLimit = 500;
 
-        if (minutes <= minutesLimit) {
-            return minutes * priceMinutes;
+        if (minutesUkr <= minutesLimit) {
+            return minutesUkr * priceMinutes;
         }
-        return (minutesLimit * priceMinutes) + ((minutes - minutesLimit) * priceMinutesOver);
+        return (minutesLimit * priceMinutes) + ((minutesUkr - minutesLimit) * priceMinutesOver);
     }
 
     public static double smsSpent(double sms) {
@@ -67,19 +65,13 @@ public class PhoneBill {
         return sms * priceSms;
     }
 
-    public static double callZoneOneSpent(double minutes) {
+    public static double callZoneOneSpent(double minutesZoneOne) {
         double priceMinutes = 1.5;
-        double amount = minutes * priceMinutes;
-        return amount;
+        return minutesZoneOne * priceMinutes;
     }
 
-    public static double callZoneTwoSpent(double minutes) {
+    public static double callZoneTwoSpent(double minutesZoneTwo) {
         double priceMinutes = 2;
-        double amount = minutes * priceMinutes;
-        return amount;
-    }
-
-    public static double addTax(double price) {
-        return price * TAX;
+        return minutesZoneTwo * priceMinutes;
     }
 }
