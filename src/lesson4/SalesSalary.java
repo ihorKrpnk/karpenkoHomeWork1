@@ -5,7 +5,7 @@ public class SalesSalary {
     public static void main(String[] args) {
 
         double rate = 5;
-        int hours = 170;
+        int hours = 150;
         int experience = 7;
         int sale = 21;
         int amountSale = 20000;
@@ -15,21 +15,22 @@ public class SalesSalary {
     }
 
     public static double totalSalaryMethod(double rate, int hours, int experience, int sale, int amountSale) {
-        double calculateSalary = calculateSalary(hours, rate);
         double experienceRate = experienceRate(experience);
+        double calculateSalary = calculateSalary(hours, rate, experienceRate);
         double bonusSales = bonusSales(sale) + bonusAmountSales(amountSale);
-        return (calculateSalary * experienceRate) + bonusSales;
+        return calculateSalary + bonusSales;
     }
 
-    public static double calculateSalary(int hours, double rate) {
+    public static double calculateSalary(int hours, double rate, double experienceRate) {
 
         if (hours > 160) {
-            double baseSalary = 160 * rate;
+            double baseSalary = 160 * rate * experienceRate;
             int overtimeHours = hours - 160;
             double overtimeSalary = overtimeHours * 1.5 * rate;
             return baseSalary + overtimeSalary;
         }
-        return hours * rate;
+
+        return hours * rate * experienceRate;
     }
 
     private static double experienceRate(int experience) {
