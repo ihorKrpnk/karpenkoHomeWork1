@@ -11,23 +11,32 @@ public class PhoneBillCalculation {
 }
 
 class PhoneBill {
-
-    private double totalBill;
     private final static double TAX = 1.07;
+    private double gigaBytes;
+    private double minutesUkr;
+    private double sms;
+    private double minutesZoneOne;
+    private double minutesZoneTwo;
+    private double bill;
 
     public PhoneBill(double gigaBytes, double minutesUkr, double sms, double minutesZoneOne, double minutesZoneTwo) {
-        setTotalBill(totalPhoneBillMethod(gigaBytes, minutesUkr, sms, minutesZoneOne, minutesZoneTwo));
+        this.gigaBytes = gigaBytes;
+        this.minutesUkr = minutesUkr;
+        this.sms = sms;
+        this.minutesZoneOne = minutesZoneOne;
+        this.minutesZoneTwo = minutesZoneTwo;
+        setBill(totalPhoneBillMethod(gigaBytes, minutesUkr, sms, minutesZoneOne, minutesZoneTwo));
     }
 
     public double getPhoneBill() {
-        return totalBill;
+        return bill;
     }
 
-    public void setTotalBill(double totalBill) {
-        this.totalBill = totalBill;
+    public void setBill(double bill) {
+        this.bill = bill;
     }
 
-    public static double totalPhoneBillMethod(double gigaBytes, double minutesUkr, double sms, double minutesZoneOne, double minutesZoneTwo) {
+    public double totalPhoneBillMethod(double gigaBytes, double minutesUkr, double sms, double minutesZoneOne, double minutesZoneTwo) {
         double trafficSpent = trafficSpent(gigaBytes);
         double callSpentUkr = callSpentUkr(minutesUkr);
         double smsSpent = smsSpent(sms);
@@ -36,7 +45,7 @@ class PhoneBill {
         return (trafficSpent + callSpentUkr + smsSpent + callZoneOneSpent + callZoneTwoSpent) * TAX;
     }
 
-    public static double trafficSpent(double gigaBytes) {
+    public double trafficSpent(double gigaBytes) {
         double totalGigaBytes = 8;
         double basePlan = 180;
         double price500Mb = 50;
@@ -56,7 +65,7 @@ class PhoneBill {
         return basePlan + overPrice;
     }
 
-    public static double callSpentUkr(double minutesUkr) {
+    public double callSpentUkr(double minutesUkr) {
         double priceMinutes = 0.5;
         double priceMinutesOver = 0.75;
         double minutesLimit = 500;
@@ -67,7 +76,7 @@ class PhoneBill {
         return (minutesLimit * priceMinutes) + ((minutesUkr - minutesLimit) * priceMinutesOver);
     }
 
-    public static double smsSpent(double sms) {
+    public double smsSpent(double sms) {
         double priceSms = 1;
         double priceSmsOver = 1.5;
 
@@ -77,12 +86,12 @@ class PhoneBill {
         return sms * priceSms;
     }
 
-    public static double callZoneOneSpent(double minutesZoneOne) {
+    public double callZoneOneSpent(double minutesZoneOne) {
         double priceMinutes = 1.5;
         return minutesZoneOne * priceMinutes;
     }
 
-    public static double callZoneTwoSpent(double minutesZoneTwo) {
+    public double callZoneTwoSpent(double minutesZoneTwo) {
         double priceMinutes = 2;
         return minutesZoneTwo * priceMinutes;
     }
