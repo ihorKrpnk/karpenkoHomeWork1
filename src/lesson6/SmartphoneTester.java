@@ -1,64 +1,89 @@
 package lesson6;
 
 abstract class Phone {
-    public void dialing() {
-        // System.out.println("Dialing in progress");
+
+    public Phone() {
+        setOs();
+        setChargerType();
+        setApplicationStore();
     }
 
-    public abstract String setOs();
+    public abstract void setOs();
 
-    public abstract String setChargerType();
+    public abstract void setChargerType();
 
-    public abstract String setApplicationStore();
+    public abstract void setApplicationStore();
 
-    public String getPhoneInfo() {
-        return "OS: " + setOs() +
-                "\nCharger type: " + setChargerType() +
-                "\nApplication store: " + setApplicationStore();
+    public void dialing() {
+        System.out.println("Dialing in progress");
     }
 }
 
 class IOSSmartphone extends Phone {
+
+    private String os;
+    private String chargerType;
+    private String applicationStore;
+
     @Override
-    public void dialing() {
-        System.out.println("iPhone...Dialing in progress!");
+    public void setOs() {
+        os = "iOS";
     }
 
     @Override
-    public String setOs() {
-        return "iOS 15.4";
+    public void setChargerType() {
+        chargerType = "bad";
     }
 
     @Override
-    public String setChargerType() {
-        return "bad";
+    public void setApplicationStore() {
+        applicationStore = "App Store";
     }
 
-    @Override
-    public String setApplicationStore() {
-        return "App Store";
+    public String getOs() {
+        return os;
+    }
+
+    public String getChargerType() {
+        return chargerType;
+    }
+
+    public String getApplicationStore() {
+        return applicationStore;
     }
 }
 
 class AndroidSmartphone extends Phone {
+    private String os;
+    private String chargerType;
+    private String applicationStore;
+
+
     @Override
-    public void dialing() {
-        System.out.println("Android...Dialing in progress!");
+    public void setOs() {
+        os = "Android 9.0";
     }
 
     @Override
-    public String setOs() {
-        return "Android 12";
+    public void setChargerType() {
+        chargerType = "bad";
     }
 
     @Override
-    public String setChargerType() {
-        return "bad";
+    public void setApplicationStore() {
+        applicationStore = "Google Play Market";
     }
 
-    @Override
-    public String setApplicationStore() {
-        return "Google Play Market";
+    public String getOs() {
+        return os;
+    }
+
+    public String getChargerType() {
+        return chargerType;
+    }
+
+    public String getApplicationStore() {
+        return applicationStore;
     }
 }
 
@@ -66,9 +91,13 @@ public class SmartphoneTester {
     public static void main(String[] args) {
         IOSSmartphone iOSSmartphone = new IOSSmartphone();
         iOSSmartphone.dialing();
-        System.out.println(iOSSmartphone.getPhoneInfo());
+        System.out.println("OS: " + iOSSmartphone.getOs() +
+                "\nCharger Type: " + iOSSmartphone.getChargerType() +
+                "\nApplication store: " + iOSSmartphone.getApplicationStore());
         AndroidSmartphone androidSmartphone = new AndroidSmartphone();
         androidSmartphone.dialing();
-        System.out.println(androidSmartphone.getPhoneInfo());
+        System.out.println("OS: " + androidSmartphone.getOs() +
+                "\nCharger Type: " + androidSmartphone.getChargerType() +
+                "\nApplication store: " + androidSmartphone.getApplicationStore());
     }
 }
