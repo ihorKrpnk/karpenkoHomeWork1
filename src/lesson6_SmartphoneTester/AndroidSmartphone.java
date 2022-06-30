@@ -1,6 +1,6 @@
 package lesson6_SmartphoneTester;
 
-class AndroidSmartphone extends Phone {
+public class AndroidSmartphone extends Phone {
     private String os;
     private String chargerType;
     private String applicationStore;

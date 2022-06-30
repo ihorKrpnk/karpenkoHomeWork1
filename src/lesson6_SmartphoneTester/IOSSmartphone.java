@@ -1,6 +1,6 @@
 package lesson6_SmartphoneTester;
 
-class IOSSmartphone extends Phone {
+public class IOSSmartphone extends Phone {
 
     private String os;
     private String chargerType;
