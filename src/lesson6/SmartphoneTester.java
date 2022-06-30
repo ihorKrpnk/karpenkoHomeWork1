@@ -2,11 +2,11 @@ package lesson6;
 
 abstract class Phone {
 
-    public Phone() {
+   /* public Phone() {
         setOs();
         setChargerType();
         setApplicationStore();
-    }
+    }*/
 
     public abstract void setOs();
 
@@ -25,19 +25,27 @@ class IOSSmartphone extends Phone {
     private String chargerType;
     private String applicationStore;
 
+
+    public IOSSmartphone(String os, String chargerType, String applicationStore) {
+        this.os = os;
+        this.chargerType = chargerType;
+        this.applicationStore = applicationStore;
+        setOs();
+        setChargerType();
+        setApplicationStore();
+    }
+
+
     @Override
     public void setOs() {
-        os = "iOS";
     }
 
     @Override
     public void setChargerType() {
-        chargerType = "bad";
     }
 
     @Override
     public void setApplicationStore() {
-        applicationStore = "App Store";
     }
 
     public String getOs() {
@@ -58,20 +66,25 @@ class AndroidSmartphone extends Phone {
     private String chargerType;
     private String applicationStore;
 
+    public AndroidSmartphone(String os, String chargerType, String applicationStore) {
+        this.os = os;
+        this.chargerType = chargerType;
+        this.applicationStore = applicationStore;
+        setOs();
+        setChargerType();
+        setApplicationStore();
+    }
 
     @Override
     public void setOs() {
-        os = "Android 9.0";
     }
 
     @Override
     public void setChargerType() {
-        chargerType = "bad";
     }
 
     @Override
     public void setApplicationStore() {
-        applicationStore = "Google Play Market";
     }
 
     public String getOs() {
@@ -89,12 +102,12 @@ class AndroidSmartphone extends Phone {
 
 public class SmartphoneTester {
     public static void main(String[] args) {
-        IOSSmartphone iOSSmartphone = new IOSSmartphone();
+        IOSSmartphone iOSSmartphone = new IOSSmartphone("iOS", "bad", "App Store");
         iOSSmartphone.dialing();
         System.out.println("OS: " + iOSSmartphone.getOs() +
                 "\nCharger Type: " + iOSSmartphone.getChargerType() +
                 "\nApplication store: " + iOSSmartphone.getApplicationStore());
-        AndroidSmartphone androidSmartphone = new AndroidSmartphone();
+        AndroidSmartphone androidSmartphone = new AndroidSmartphone("Android", "bad", "Google Play");
         androidSmartphone.dialing();
         System.out.println("OS: " + androidSmartphone.getOs() +
                 "\nCharger Type: " + androidSmartphone.getChargerType() +
