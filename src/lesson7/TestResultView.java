@@ -1,7 +1,6 @@
 package lesson7;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 public class TestResultView {
@@ -20,8 +19,8 @@ public class TestResultView {
             }
         }
 
-        for (Map.Entry<String, Integer> bestGradeMap : GradeBook.gradeBookMap.entrySet()) {
-            System.out.println(bestGradeMap);
+        for (HashMap.Entry<String, Integer> bestGrades : GradeBook.gradeBookMap.entrySet()) {
+            System.out.println(bestGrades);
         }
     }
 
