@@ -21,9 +21,7 @@ public class TestResultView {
         }
 
         for (Map.Entry<String, Integer> bestGradeMap : GradeBook.gradeBookMap.entrySet()) {
-            String key = bestGradeMap.getKey();
-            Integer value = bestGradeMap.getValue();
-            System.out.println(key + "=" + value);
+            System.out.println(bestGradeMap);
         }
     }
 
