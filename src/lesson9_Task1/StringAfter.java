@@ -8,9 +8,12 @@ public class StringAfter {
     }
 
     public static String afterFellInUpperCase(String inputString) {
-        inputString = inputString.substring(18, 22);
-        String inputStringUp = inputString.toUpperCase();
-        return inputStringUp;
+        String[] splitted = inputString.split("\\s+");
+        for (int i = 0; i < splitted.length; i++) {
+            if (splitted[i].equals("feel")) {
+                return splitted[i + 1].toUpperCase();
+            }
+        }
+        return inputString;
     }
 }
-
