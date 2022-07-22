@@ -15,15 +15,19 @@ public class HoweWorkWithStreams {
 
         //1
         List<Computer> computersWindows = computersList().stream()
-                .filter(comp -> comp.getOS().contains("Windows")).toList();
+                .filter(comp -> comp.getOS().contains("Windows"))
+                .toList();
         System.out.println(computersWindows);
         //2
         List<Computer> twoComputersSsd = computersList().stream()
-                .filter(compSsd -> compSsd.getStorage().getStorageType().contains("SSD")).limit(2).toList();
+                .filter(compSsd -> compSsd.getStorage().getStorageType().contains("SSD"))
+                .limit(2)
+                .toList();
         System.out.println(twoComputersSsd);
         //3
         List<Double> prices = computersList().stream()
-                .map(Computer::getPrice).toList();
+                .map(Computer::getPrice)
+                .toList();
         System.out.println(prices);
         //4
         double sortedPrice = computersList().stream()
