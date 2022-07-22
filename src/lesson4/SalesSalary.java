@@ -5,10 +5,10 @@ public class SalesSalary {
     public static void main(String[] args) {
 
         double rate = 5;
-        int hours = 150;
-        int experience = 7;
-        int sale = 21;
-        int amountSale = 20000;
+        int hours = 170;
+        int experience = 10;
+        int sale = 25;
+        int amountSale = 50000;
         double totalSalary = totalSalaryMethod(rate, hours, experience, sale, amountSale);
 
         System.out.println("Итого зарплата составляет: " + totalSalary + " $");
